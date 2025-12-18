@@ -184,7 +184,7 @@ if (password) {
                 if (!hasLowerCase) hintText += 'minúscula ';
                 if (!hasNumber) hintText += 'número';
             } else {
-                hintText = '✅ Contraseña válida';
+                hintText = 'Contraseña válida';
                 passwordHint.style.color = '#10b981';
             }
             

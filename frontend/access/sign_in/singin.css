@@ -98,7 +98,9 @@ body {
 }
 
 .form-group {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
 }
 
 .form-input {
@@ -362,26 +364,20 @@ body {
     border-color: var(--error-color);
 }
 
-/* Floating labels */
+/* Labels estándares - ahora aparecen ARRIBA del input */
 .floating-label {
-    position: absolute;
-    top: 1rem;
-    left: 1.25rem;
+    display: block;
     color: var(--text-light);
-    font-weight: 500;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    background: white;
-    padding: 0 0.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    pointer-events: auto;
+    transition: color 0.3s ease;
 }
 
-.form-input:focus + .floating-label,
-.form-input:not(:placeholder-shown) + .floating-label {
-    top: -0.5rem;
-    left: 0.75rem;
-    font-size: 0.75rem;
+.form-input:focus ~ .floating-label {
     color: var(--accent-color);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* Estilos específicos para el campo de teléfono */

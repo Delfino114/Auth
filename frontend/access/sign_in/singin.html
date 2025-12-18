@@ -27,6 +27,9 @@
         <!-- Nombre y Apellido -->
         <div class="form-row">
           <div class="form-group">
+            <label for="first_name" class="floating-label">
+              <i class="fas fa-user"></i> Nombre
+            </label>
             <input 
               type="text" 
               class="form-input" 
@@ -37,12 +40,12 @@
               pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]{1,45}$"
               title="Solo letras, máximo 45 caracteres"
             />
-            <label for="first_name" class="floating-label">
-              <i class="fas fa-user"></i> Nombre
-            </label>
           </div>
           
           <div class="form-group">
+            <label for="last_name" class="floating-label">
+              <i class="fas fa-user"></i> Apellido
+            </label>
             <input 
               type="text" 
               class="form-input" 
@@ -53,14 +56,14 @@
               pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]{1,45}$"
               title="Solo letras, máximo 45 caracteres"
             />
-            <label for="last_name" class="floating-label">
-              <i class="fas fa-user"></i> Apellido
-            </label>
           </div>
         </div>
 
         <!-- Email -->
         <div class="form-group">
+          <label for="your_email" class="floating-label">
+            <i class="fas fa-envelope"></i> Correo electrónico
+          </label>
           <input 
             type="email" 
             class="form-input" 
@@ -70,13 +73,13 @@
             maxlength="100"
             pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"
           />
-          <label for="your_email" class="floating-label">
-            <i class="fas fa-envelope"></i> Correo electrónico
-          </label>
         </div>
 
         <!-- Contraseña -->
         <div class="form-group">
+          <label for="password" class="floating-label">
+            <i class="fas fa-lock"></i> Contraseña (10 caracteres)
+          </label>
           <div class="input-group">
             <input 
               type="password" 
@@ -89,9 +92,6 @@
               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10}$"
               title="Exactamente 10 caracteres: 1 mayúscula, 1 minúscula y 1 número. No se permiten símbolos especiales"
             />
-            <label for="password" class="floating-label">
-              <i class="fas fa-lock"></i> Contraseña (10 caracteres)
-            </label>
             <button type="button" class="password-toggle" id="togglePassword">
               <i class="fas fa-eye"></i>
             </button>
@@ -101,6 +101,9 @@
 
         <!-- Confirmar Contraseña -->
         <div class="form-group">
+          <label for="confirmPassword" class="floating-label">
+            <i class="fas fa-lock"></i> Confirmar Contraseña
+          </label>
           <div class="input-group">
             <input 
               type="password" 
@@ -111,9 +114,6 @@
               minlength="10"
               maxlength="10"
             />
-            <label for="confirmPassword" class="floating-label">
-              <i class="fas fa-lock"></i> Confirmar Contraseña
-            </label>
             <button type="button" class="password-toggle" id="toggleConfirmPassword">
               <i class="fas fa-eye"></i>
             </button>

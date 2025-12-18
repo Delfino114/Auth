@@ -72,7 +72,8 @@ body {
 }
 
 .form-group {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 25px;
 }
 
@@ -92,32 +93,24 @@ body {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.form-input:focus + .floating-label,
-.form-input:not(:placeholder-shown) + .floating-label {
-    top: -10px;
-    left: 15px;
-    font-size: 0.8rem;
-    color: #667eea;
-    background: white;
-    padding: 0 8px;
+.floating-label {
+    display: block;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    pointer-events: auto;
+    transition: color 0.3s ease;
 }
 
-.floating-label {
-    position: absolute;
-    top: 50%;
-    left: 50px;
-    transform: translateY(-50%);
-    color: #a0aec0;
-    font-size: 1rem;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+.form-input:focus ~ .floating-label {
+    color: var(--accent-color);
+    font-weight: 700;
 }
 
 .floating-label i {
     width: 16px;
+    margin-right: 0.25rem;
 }
 
 .input-hint {
