@@ -1,0 +1,39 @@
+# ======================
+# Backend (Python)
+# ======================
+backend/.env
+backend/src/.env
+backend/__pycache__/
+backend/*/__pycache__/
+backend/*/*/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+
+# ======================
+# Frontend (Node)
+# ======================
+frontend/node_modules/
+
+# ======================
+# Gradle / Java
+# ======================
+.gradle/
+build/
+**/build/
+
+# ======================
+# IDEs
+# ======================
+.idea/
+*.iml
+.vscode/
+
+# ======================
+# Logs & OS
+# ======================
+*.log
+.DS_Store
+Thumbs.db
