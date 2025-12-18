@@ -1,28 +1,53 @@
 // frontend/access/sign_in/singin.js
-// ✅ DETECCIÓN MEJORADA - FUNCIONA EN LOCAL Y PRODUCCIÓN
+
+// Función para detectar y bloquear inyección SQL
+function detectSQLInjection(value) {
+    const sqlPatterns = [
+        /(\b(UNION|SELECT|INSERT|UPDATE|DELETE|DROP|CREATE|ALTER|EXEC|EXECUTE|SCRIPT|JAVASCRIPT|ON|OR|AND)\b)/gi,
+        /(<script|javascript:|onerror=|onclick=|onload=)/gi,
+        /['"`]/g,
+        /--|;|\/\*/g
+    ];
+    
+    for (let pattern of sqlPatterns) {
+        if (pattern.test(value)) {
+            return true;
+        }
+    }
+    
+    const injectionPatterns = [
+        /(\d\s*=\s*\d|'\s*or\s*'|"\s*or\s*")/gi,
+        /(union.*select|select.*from|insert.*into)/gi
+    ];
+    
+    for (let pattern of injectionPatterns) {
+        if (pattern.test(value)) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+// DETECCIÓN MEJORADA - FUNCIONA EN LOCAL Y PRODUCCIÓN
 const API_URL = (() => {
     const hostname = window.location.hostname;
-    console.log('🔍 Detección ambiente - hostname:', hostname, 'port:', window.location.port);
+    console.log('Detección ambiente - hostname:', hostname, 'port:', window.location.port);
     
     // Desarrollo: localhost, 127.0.0.1, o cualquier URL con puerto
     if (hostname === 'localhost' || 
         hostname === '127.0.0.1' ||
         window.location.port !== '') {
-        console.log('🎯 MODO DESARROLLO - Usando localhost:5000');
+        console.log('MODO DESARROLLO - Usando localhost:5000');
         return 'http://localhost:5000';
     } else {
-        console.log('🚀 MODO PRODUCCIÓN - Usando Render.com');
+        console.log('MODO PRODUCCIÓN - Usando Render.com');
         return 'https://auth-6myc.onrender.com';
     }
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Sign in page loaded');
-    // ... resto de tu código ...
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Sign in page loaded');
+    console.log('Sign in page loaded');
     
     // Elementos del DOM
     const togglePassword = document.getElementById('togglePassword');
@@ -67,7 +92,7 @@ if (emailInput) {
             
             const msgDiv = document.createElement('div');
             msgDiv.id = 'tempEmailValidation';
-            msgDiv.textContent = '❌ No se permiten símbolos especiales en el email';
+            msgDiv.textContent = 'No se permiten símbolos especiales en el email';
             msgDiv.style.cssText = `
                 position: fixed;
                 top: 20px;
@@ -281,7 +306,7 @@ if (password) {
 });
 
 document.getElementById("registerBtn").addEventListener("click", async () => {
-    console.log('📝 Register button clicked');
+    console.log('Register button clicked');
     
     const first_name = document.getElementById("first_name").value.trim();
     const last_name = document.getElementById("last_name").value.trim();
@@ -293,9 +318,27 @@ document.getElementById("registerBtn").addEventListener("click", async () => {
     const registerMessage = document.getElementById('registerMessage');
     const registerBtn = document.getElementById('registerBtn');
 
+    // Validar inyección SQL en email
+    if (detectSQLInjection(email)) {
+        showMessage("Correo electrónico inválido. No se permiten caracteres especiales", 'error');
+        return;
+    }
+
+    // Validar inyección SQL en nombre
+    if (detectSQLInjection(first_name)) {
+        showMessage("Nombre inválido. No se permiten caracteres especiales", 'error');
+        return;
+    }
+
+    // Validar inyección SQL en apellido
+    if (detectSQLInjection(last_name)) {
+        showMessage("Apellido inválido. No se permiten caracteres especiales", 'error');
+        return;
+    }
+
     const hasNoSymbols = /^[a-zA-Z\d]+$/.test(password);
     if (!hasNoSymbols) {
-        showMessage("❌ La contraseña no puede contener símbolos especiales (@, ., etc)", 'error');
+        showMessage("La contraseña no puede contener símbolos especiales", 'error');
         return;
     }
     
