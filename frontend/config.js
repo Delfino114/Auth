@@ -6,6 +6,6 @@ const API_URL = (() => {
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
     return 'http://localhost:5000';  // Desarrollo
   } else {
-    return 'https://metodos-scwr.onrender.com';  // Producción - CAMBIARÁS ESTO
+    return 'https://auth-6myc.onrender.com';  // Producción - CAMBIARÁS ESTO
   }
 })();

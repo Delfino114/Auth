@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.port !== '') {
             return 'http://localhost:5000';
         } else {
-            return 'https://metodos-scwr.onrender.com';
+            return 'https://auth-6myc.onrender.com';
         }
     })();
     

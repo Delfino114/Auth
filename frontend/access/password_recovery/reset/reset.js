@@ -12,7 +12,7 @@ const API_URL = (() => {
         return 'http://localhost:5000';
     } else {
         console.log('🚀 MODO PRODUCCIÓN - Usando Render.com');
-        return 'https://metodos-scwr.onrender.com';
+        return 'https://auth-6myc.onrender.com';
     }
 })();
 
