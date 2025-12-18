@@ -1,11 +1,11 @@
 # backend/requirements.txt
-Flask==2.3.3
-pymongo==4.5.0
-twilio==8.10.0
-python-dotenv==1.0.0
-flask-cors==4.0.0
-pyotp==2.8.0
-qrcode[pil]==7.4.2
-requests==2.31.0         
-gunicorn==21.2.0  
-bcrypt==4.0.1
+Flask
+pymongo
+twilio
+python-dotenv
+flask-cors
+pyotp
+qrcode[pil]
+requests        
+gunicorn  
+bcrypt

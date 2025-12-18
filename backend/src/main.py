@@ -56,7 +56,7 @@ CORS(app,
                 "http://localhost:3000",
                 "http://127.0.0.1:3000",
                 "http://localhost:5173",
-                "https://metodos-two.vercel.app",
+                "https://auth-five-delta.vercel.app",
                 "https://*.vercel.app"
             ],
             "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -78,7 +78,7 @@ def after_request(response):
         'http://localhost:3000',
         'http://127.0.0.1:3000',
         'http://localhost:5173',
-        'https://metodos-two.vercel.app'
+        'https://auth-five-delta.vercel.app'
     ]
     
     # Permitir cualquier subdominio de vercel.app
